@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
 import { Emotion, EmotionInfo } from "@/app/interfaces/emotion";
-
-
-export const dynamic = "force-dynamic";
 const API_KEY = process.env.FREESOUND_API_KEY;
 
 export const emotionMap: Record<Emotion, EmotionInfo> = {

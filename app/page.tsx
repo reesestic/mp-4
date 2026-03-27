@@ -135,7 +135,7 @@ export default function Home() {
                 </ButtonGroup>
 
                 {emotion && (
-                    <LinkButton href={`/sound?emotion=${emotion}`}>
+                    <LinkButton href={`/${emotion}`}>
                         Give me a {emotion} sound!
                     </LinkButton>
                 )}

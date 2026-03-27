@@ -1,11 +1,11 @@
 "use client";
 
-export const dynamic = "force-dynamic";
+import {useParams} from "next/navigation";
 import styled from "styled-components";
-import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { SoundResponse } from "@/app/interfaces/soundResponse";
+import {Emotion} from "@/app/interfaces/emotion";
 
 
 // 🎨 Styled components (only important ones)
@@ -63,14 +63,9 @@ const LoadingOrErrorStyler = styled.div`
 
 export default function SoundPage() {
 
-    // I was confused by the dynamic [folder] naming convention and was
-    // crammed on time, so i read the Next.js docs and found useSearchparams
-    // a few tabs below useParams (that was used in class) and used this instead
-    // of using dynamic routing by getting query parameters directly here
-
     // Docs said to do .get(thing after ?) to get its value, so i do that here
-    const params = useSearchParams();
-    const emotion = params.get("emotion");
+    const params = useParams<{emotion:Emotion}>();
+    const { emotion } = params;
 
     const [data, setData] = useState<SoundResponse | null>(null);
     const [loading, setLoading] = useState(true);
